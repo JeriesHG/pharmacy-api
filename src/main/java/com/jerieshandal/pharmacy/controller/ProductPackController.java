@@ -10,7 +10,9 @@ import com.jerieshandal.pharmacy.json.JSONResponse;
 import com.jerieshandal.pharmacy.json.ResponseStatus;
 import com.jerieshandal.pharmacy.service.StockElementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,11 +31,12 @@ public class ProductPackController {
     private StockElementService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public JSONResponse retrieveProductPacks() {
+    public ResponseEntity retrieveProductPacks() {
+        ResponseEntity.BodyBuilder entity = ResponseEntity.status(HttpStatus.OK);
+        
         JSONResponse response = new JSONResponse(ResponseStatus.success);
-
         response.put("productPacks", service.retrieveProductPacks());
 
-        return response;
+        return entity.body(response);
     }
 }

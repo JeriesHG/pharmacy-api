@@ -31,6 +31,15 @@ public class Stock extends AbstractEntity implements Serializable {
     @OneToOne(optional = true, targetEntity = StockElement.class)
     @JoinColumn(name = "id_stock_element")
     private StockElement stockElement;
+    
+    public Stock(){
+        
+    }
+
+    public Stock(Long quantity, StockElement stockElement) {
+        this.quantity = quantity;
+        this.stockElement = stockElement;
+    }
 
     public Long getQuantity() {
         return quantity;

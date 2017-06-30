@@ -27,14 +27,12 @@ public abstract class AbstractProduct extends AbstractEntity implements Serializ
 
     @Column(name = "expiration_date", nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date expiration;
+    protected Date expiration;
     @OneToOne(optional = false, targetEntity = StockElement.class)
     @JoinColumn(name = "id_stock_element")
-    private StockElement stockElement;
+    protected StockElement stockElement;
     @Column(name = "pr_name", nullable = false)
-    private String name;
-
-
+    protected String name;
 
     public Date getExpiration() {
         return expiration;

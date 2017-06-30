@@ -2,7 +2,7 @@
  * Author:  JeriesHG
  * Created: Jun 27, 2017
  */
-
+DROP TABLE IF EXISTS Stock_element;
 CREATE TABLE Stock_element (
     Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     price DECIMAL(10,2) not null,
@@ -10,6 +10,7 @@ CREATE TABLE Stock_element (
     vendor VARCHAR(32) not null
 );
 
+DROP TABLE IF EXISTS Stock;
 CREATE TABLE Stock (
     Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     quantity INT not null,
@@ -17,6 +18,7 @@ CREATE TABLE Stock (
     UNIQUE (id_stock_element)
 );
 
+DROP TABLE IF EXISTS Medicine;
 CREATE TABLE Medicine (
     Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     pr_name VARCHAR(64) not null,
@@ -26,6 +28,7 @@ CREATE TABLE Medicine (
     UNIQUE (id_stock_element)
 );
 
+DROP TABLE IF EXISTS Beauty_product;
 CREATE TABLE Beauty_product (
     Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     pr_name VARCHAR(64) not null,
@@ -34,6 +37,7 @@ CREATE TABLE Beauty_product (
     UNIQUE (id_stock_element)
 );
 
+DROP TABLE IF EXISTS Market_research;
 CREATE TABLE Market_research (
     Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     rate Decimal(10,4) not null,

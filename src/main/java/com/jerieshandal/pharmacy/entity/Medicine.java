@@ -7,6 +7,7 @@
 package com.jerieshandal.pharmacy.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -25,6 +26,17 @@ public class Medicine extends AbstractProduct implements Serializable {
 
     @Column(name = "weight", nullable = false)
     private double weight;
+
+    public Medicine() {
+
+    }
+
+    public Medicine(Date expiration, StockElement stockElement, String name, double weight) {
+        this.expiration = expiration;
+        this.stockElement = stockElement;
+        this.name = name;
+        this.weight = weight;
+    }
 
     public double getWeight() {
         return weight;

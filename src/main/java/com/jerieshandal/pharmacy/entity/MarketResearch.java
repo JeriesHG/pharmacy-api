@@ -32,6 +32,15 @@ public class MarketResearch extends AbstractEntity implements Serializable {
     @ManyToOne(targetEntity = BeautyProduct.class)
     @JoinColumn(name = "id_beauty_product", nullable = false)
     private BeautyProduct beautyProduct;
+    
+    public MarketResearch(){
+        
+    }
+
+    public MarketResearch(double rate, BeautyProduct beautyProduct) {
+        this.rate = rate;
+        this.beautyProduct = beautyProduct;
+    }
 
     public double getRate() {
         return rate;
