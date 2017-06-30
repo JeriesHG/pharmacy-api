@@ -6,6 +6,7 @@
  */
 package com.jerieshandal.pharmacy.service;
 
+import com.jerieshandal.pharmacy.repository.BeautyProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
