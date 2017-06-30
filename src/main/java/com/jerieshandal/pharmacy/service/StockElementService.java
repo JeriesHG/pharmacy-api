@@ -7,6 +7,7 @@
 package com.jerieshandal.pharmacy.service;
 
 import com.jerieshandal.pharmacy.dto.ProductPackDTO;
+import com.jerieshandal.pharmacy.message.LogMessage;
 import com.jerieshandal.pharmacy.repository.StockElementRepository;
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,6 +43,7 @@ public class StockElementService extends AbstractService {
                 hydrateProductPack(productPack, objectPack);
                 c.add(productPack);
             });
+            LOGGER.info(LogMessage.READ_ALL.getMessage(), c.size());
         } catch (Exception ex) {
             LOGGER.error(ex.getMessage(), ex);
         }
