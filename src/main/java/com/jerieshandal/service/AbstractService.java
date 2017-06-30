@@ -11,7 +11,6 @@ import com.jerieshandal.exception.EntityNotFoundException;
 import com.jerieshandal.message.LogMessage;
 import com.jerieshandal.repository.AbstractRepository;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +24,7 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractService implements IService {
 
     private final AbstractRepository repository;
-    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     public AbstractService(AbstractRepository repo) {
         this.repository = repo;
@@ -107,6 +106,6 @@ public abstract class AbstractService implements IService {
             LOGGER.error(ex.getMessage(), ex);
         }
 
-        return Collections.unmodifiableList(c);
+        return c;
     }
 }

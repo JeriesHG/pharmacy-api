@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -29,6 +30,7 @@ public class MarketResearch extends AbstractEntity implements Serializable {
     private double rate;
     @JsonIgnore
     @ManyToOne(targetEntity = BeautyProduct.class)
+    @JoinColumn(name = "id_beauty_product", nullable = false)
     private BeautyProduct beautyProduct;
 
     public double getRate() {

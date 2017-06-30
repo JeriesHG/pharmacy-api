@@ -6,7 +6,11 @@
  */
 package com.jerieshandal.service;
 
+import com.jerieshandal.dto.ProductPackDTO;
 import com.jerieshandal.repository.StockElementRepository;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +23,36 @@ import org.springframework.stereotype.Service;
 @Service
 public class StockElementService extends AbstractService {
 
+    private final StockElementRepository repository;
+
     @Autowired
     public StockElementService(StockElementRepository repository) {
         super(repository);
+        this.repository = repository;
+    }
+
+    public List<ProductPackDTO> retrieveProductPacks() {
+        List<ProductPackDTO> c = new ArrayList<>();
+
+        try {
+            repository.retrieveProductPacks().stream().forEach(e -> {
+                Object[] objectPack = (Object[]) e;
+
+                ProductPackDTO productPack = new ProductPackDTO();
+                hydrateProductPack(productPack, objectPack);
+                c.add(productPack);
+            });
+        } catch (Exception ex) {
+            LOGGER.error(ex.getMessage(), ex);
+        }
+
+        return c;
+    }
+
+    private void hydrateProductPack(ProductPackDTO productPack, Object[] objectPack) {
+        productPack.setMedicine((String) objectPack[0]);
+        productPack.setBeautyProduct((String) objectPack[1]);
+        productPack.setPrice(Double.valueOf(objectPack[2] + ""));
+        productPack.setExpiration((Date) objectPack[3]);
     }
 }
